@@ -16,8 +16,8 @@ BrainQuest is an interactive quiz application built with ReactJS, designed to ch
 
 ## Try BrainQuest
 
-     ```sh
-     ww.
+    ```sh
+    brain-quest-chi.vercel.app
  
 ## Running the App Locally
 
@@ -27,15 +27,15 @@ To run BrainQuest on your local machine, follow these steps:
    Make sure you have **Git** installed. Run the following command:
 
    ```sh
-     git clone https://github.com/your-username/brainquest.git
-     cd brainquest
+   git clone https://github.com/your-username/brainquest.git
+   cd brainquest
 
 2. **Install dependencies**:
    ```sh
-     npm install
+   npm install
 
 3. **Run the app**:
-```sh
+   ```sh
    npm run dev
    
 
