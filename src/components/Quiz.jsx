@@ -95,14 +95,14 @@ function Quiz() {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
       return () => clearTimeout(timer)
     } else if (timeLeft === 0) {
-      handleAnswer(null) // Automatically move to next question when time is up
+      handleAnswer(null)
     }
   }, [timeLeft, showScore, showInstructions])
 
   const loadQuizHistory = async () => {
     const history = await getQuizHistory()
     setQuizHistory(history)
-    setAttempts(history.length) // Set the attempts to the number of entries in the quiz history
+    setAttempts(history.length)
   }
 
   const handleAnswer = (selectedAnswer) => {
@@ -123,7 +123,7 @@ function Quiz() {
       const nextQuestion = currentQuestionIndex + 1
       if (nextQuestion < quizQuestions.length) {
         setCurrentQuestionIndex(nextQuestion)
-        setTimeLeft(30) // Reset timer for next question
+        setTimeLeft(30)
       } else {
         setShowScore(true)
         saveQuizResult()
@@ -140,7 +140,7 @@ function Quiz() {
     setCurrentQuestionIndex(0)
     setScore(0)
     setShowScore(false)
-    setAttempts((prev) => prev + 1) // Increment attempts when restarting
+    setAttempts((prev) => prev + 1)
     setTimeLeft(30)
     setFeedback(null)
     setShowInstructions(true)
@@ -148,18 +148,19 @@ function Quiz() {
 
   const startQuiz = () => {
     setShowInstructions(false)
-    setAttempts((prev) => prev + 1) // Increment attempts when starting a new quiz
+    setAttempts((prev) => prev + 1)
   }
 
   const progress = (currentQuestionIndex / quizQuestions.length) * 100
 
   return (
     <motion.div
-      className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full max-w-2xl mx-auto"
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center w-full max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
+      
       <AnimatePresence mode="wait">
         {showInstructions && <Instructions key="instructions" onStart={startQuiz} />}
         {showScore && (
@@ -173,25 +174,36 @@ function Quiz() {
           />
         )}
         {!showInstructions && !showScore && (
-          <>
-            <div className="w-full flex justify-center mb-4">
-              <Timer timeLeft={timeLeft} questionNumber={currentQuestionIndex + 1} />
+          <motion.div
+            key="quiz"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            <div className="flex flex-col space-y-6 items-center mb-6">
+            <Timer timeLeft={timeLeft} questionNumber={currentQuestionIndex + 1} />
+              <span className="text-md self-start font-medium text-gray-700">
+                Question {currentQuestionIndex + 1} of {quizQuestions.length}
+              </span>
+              
             </div>
             <motion.div
-              className="w-full h-2 bg-gray-200 rounded-full mb-4"
+              className="w-full h-1 bg-gray-200 mb-8"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 0.5 }}
             >
               <motion.div
-                className="h-full bg-blue-500 rounded-full"
+                className="h-full bg-indigo-500"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.5 }}
               />
             </motion.div>
             <Question question={quizQuestions[currentQuestionIndex]} onAnswer={handleAnswer} feedback={feedback} />
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
