@@ -12,13 +12,14 @@ BrainQuest is an interactive quiz application built with ReactJS, designed to ch
 - Detailed scoreboard at the end of each quiz attempt
 - Quiz history tracking using IndexedDB for persistent storage
 - Responsive design for seamless use on various devices
-- modern and clean UI
+- Modern and clean UI
 
 ## Try BrainQuest
 
-    ```sh
-    brain-quest-chi.vercel.app
- 
+```sh
+git clone https://github.com/your-username/brainquest.git
+```
+
 ## Running the App Locally
 
 To run BrainQuest on your local machine, follow these steps:
@@ -29,14 +30,14 @@ To run BrainQuest on your local machine, follow these steps:
    ```sh
    git clone https://github.com/your-username/brainquest.git
    cd brainquest
+   ```
 
 2. **Install dependencies**:
    ```sh
    npm install
+   ```
 
 3. **Run the app**:
    ```sh
    npm run dev
-   
-
-
+   ```
