@@ -1,8 +1,43 @@
-# React + Vite
+# BrainQuest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BrainQuest is an interactive quiz application built with ReactJS, designed to challenge and engage users with a variety of questions across different topics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Dynamic quiz interface with multiple-choice and integer-based questions
+- Timed questions (30 seconds per question) to add excitement and challenge
+- Instant feedback on answers
+- Progress tracking with a visual progress bar
+- Comprehensive instructions before starting the quiz
+- Detailed scoreboard at the end of each quiz attempt
+- Quiz history tracking using IndexedDB for persistent storage
+- Responsive design for seamless use on various devices
+- Modern and clean UI
+
+## Try BrainQuest
+
+```sh
+git clone https://github.com/your-username/brainquest.git
+```
+
+## Running the App Locally
+
+To run BrainQuest on your local machine, follow these steps:
+
+1. **Clone the repository**:
+   Make sure you have **Git** installed. Run the following command:
+
+   ```sh
+   git clone https://github.com/your-username/brainquest.git
+   cd brainquest
+   ```
+
+2. **Install dependencies**:
+   ```sh
+   npm install
+   ```
+
+3. **Run the app**:
+   ```sh
+   npm run dev
+   ```
